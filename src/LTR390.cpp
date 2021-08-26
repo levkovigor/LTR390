@@ -102,16 +102,16 @@ uint32_t LTR390::readUVS(void) {
 uint32_t LTR390::getLux(){
   uint32_t raw = readALS();
   uint8_t gain_arr[5] = {1, 3, 6, 9, 18};
-  float int_time[6] = {4, 2, 1, 0.5, 0.25, 0.125};
-  uint32_t lux = 0.6 * raw / (gain_arr[_gain] * int_time[_resolution]) * WFAC;
+  float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
+  uint32_t lux = 0.6 * raw / (gain_arr[_gain] * res_factor[_resolution]) * WFAC;
   return lux;
 }
 
 uint32_t LTR390::getUVI(){
   uint32_t raw = readUVS();
   uint8_t gain_arr[5] = {1, 3, 6, 9, 18};
-  double res_factor[6] = {20, 19, 18, 17, 16, 13};
-  uint32_t uvi = raw / ((gain_arr[_gain] / 18) * (pow(2, res_factor[_resolution])) / (pow(2, 20)) * 2300) * WFAC;
+  float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
+  uint32_t uvi = raw / ((gain_arr[_gain] / 18) * (res_factor[_resolution] / res_factor[0]) * 2300) * WFAC;
   return uvi;
 }
 
