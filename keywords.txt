@@ -1,0 +1,45 @@
+#######################################
+# Syntax Coloring Map For LTR390
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LTR390	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init			KEYWORD2
+reset			KEYWORD2
+enable			KEYWORD2
+enabled		KEYWORD2
+setMode		KEYWORD2
+setResolution		KEYWORD2
+setGain		KEYWORD2
+setThresholds		KEYWORD2
+configInterrupt	KEYWORD2
+newDataAvailable	KEYWORD2
+readUVS		KEYWORD2
+readALS		KEYWORD2
+getLux			KEYWORD2
+getUVI			KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+LTR390_MODE_ALS		LITERAL1
+LTR390_MODE_UVS		LITERAL1
+LTR390_GAIN_1			LITERAL1
+LTR390_GAIN_3			LITERAL1
+LTR390_GAIN_6			LITERAL1
+LTR390_GAIN_9			LITERAL1
+LTR390_GAIN_18			LITERAL1
+LTR390_RESOLUTION_20BIT	LITERAL1
+LTR390_RESOLUTION_19BIT	LITERAL1
+LTR390_RESOLUTION_18BIT	LITERAL1
+LTR390_RESOLUTION_17BIT	LITERAL1
+LTR390_RESOLUTION_16BIT	LITERAL1
+LTR390_RESOLUTION_13BIT	LITERAL1
