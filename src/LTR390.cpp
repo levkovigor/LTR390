@@ -111,7 +111,7 @@ uint32_t LTR390::getUVI(){
   uint32_t raw = readUVS();
   uint8_t gain_arr[5] = {1, 3, 6, 9, 18};
   float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
-  uint32_t uvi = raw / ((gain_arr[_gain] / 18) * (res_factor[_resolution] / res_factor[0]) * 2300) * WFAC;
+  uint32_t uvi = raw / ((gain_arr[_gain] / 18) * (res_factor[_resolution] / res_factor[0]) * 1400) * WFAC;
   return uvi;
 }
 
