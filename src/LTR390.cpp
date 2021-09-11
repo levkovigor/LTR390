@@ -190,7 +190,7 @@ void LTR390::setResolution(ltr390_resolution_t res) {
   uint8_t _r = 0;
   _r |= (res << 4);
   _resolution = res;
-  writeRegister(LTR390_MEAS_RATE, (uint8_t)res);
+  writeRegister(LTR390_MEAS_RATE, (uint8_t)_r);
 }
 
 /*!
@@ -201,7 +201,8 @@ void LTR390::setResolution(ltr390_resolution_t res) {
  */
 ltr390_resolution_t LTR390::getResolution(void) {
   uint8_t _r = readRegister(LTR390_MEAS_RATE);
-  _r &= 7;
+  _r &= 70;
+  _r = 7 & (_r >> 4);
   return (ltr390_resolution_t)_r;
 }
 
