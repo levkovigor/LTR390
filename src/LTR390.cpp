@@ -51,7 +51,6 @@ bool LTR390::reset(void) {
   uint8_t _r = readRegister(LTR390_MAIN_CTRL);
   _r |= B00010000;
   byte ack = writeRegister(LTR390_MAIN_CTRL, _r);
-  if (ack != 0) return false;
   delay(10);
   _r = readRegister(LTR390_MAIN_CTRL);
   if (_r != 0) {
