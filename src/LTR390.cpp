@@ -98,19 +98,19 @@ uint32_t LTR390::readUVS(void) {
   return _out;
 }
 
-uint32_t LTR390::getLux(){
+float LTR390::getLux(){
   uint32_t raw = readALS();
-  uint8_t gain_arr[5] = {1, 3, 6, 9, 18};
-  float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
-  uint32_t lux = 0.6 * raw / (gain_arr[_gain] * res_factor[_resolution]) * WFAC;
+  uint8_t _gain = (uint8_t)(getGain());
+  uint8_t _resolution = (uint8_t)(getResolution());
+  float lux = 0.6 * (float)(raw) / (gain_factor[_gain] * res_factor[_resolution]) * (float)(WFAC);
   return lux;
 }
 
-uint32_t LTR390::getUVI(){
+float LTR390::getUVI(){
   uint32_t raw = readUVS();
-  uint8_t gain_arr[5] = {1, 3, 6, 9, 18};
-  float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
-  uint32_t uvi = raw / ((gain_arr[_gain] / 18) * (res_factor[_resolution] / res_factor[0]) * 1400) * WFAC;
+  uint8_t _gain = (uint8_t)(getGain());
+  uint8_t _resolution = (uint8_t)(getResolution());
+  float uvi = (float)(raw) / ((gain_factor[_gain] / gain_factor[LTR390_GAIN_18]) * (res_factor[_resolution] / res_factor[LTR390_RESOLUTION_20BIT]) * (float)(UV_SENSITIVITY)) * (float)(WFAC);
   return uvi;
 }
 
@@ -164,7 +164,6 @@ ltr390_mode_t LTR390::getMode(void) {
  *  LTR390_GAIN_9 or LTR390_GAIN_18
  */
 void LTR390::setGain(ltr390_gain_t gain) {
-  _gain = gain;
   writeRegister(LTR390_GAIN, (uint8_t)gain);
 }
 
@@ -188,7 +187,6 @@ ltr390_gain_t LTR390::getGain(void) {
 void LTR390::setResolution(ltr390_resolution_t res) {
   uint8_t _r = 0;
   _r |= (res << 4);
-  _resolution = res;
   writeRegister(LTR390_MEAS_RATE, (uint8_t)_r);
 }
 
