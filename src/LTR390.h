@@ -9,6 +9,8 @@
 
 #include <Wire.h>
 
+#define UV_SENSITIVITY  1400
+
 #define WFAC            1
 /*
 *  For device under tinted window with coated-ink of flat transmission rate at 400-600nm wavelength,  
@@ -92,9 +94,9 @@ public:
   uint32_t readUVS(void);
   uint32_t readALS(void);
 
-  float getLux(void);
+  uint32_t getLux(void);
 
-  float getUVI(void);
+  uint32_t getUVI(void);
 
   uint8_t writeRegister(uint8_t reg, uint8_t val);
   uint8_t readRegister(uint8_t reg);
@@ -102,8 +104,8 @@ public:
 private:
   TwoWire *_wire;
   int i2cAddress;
-  int _gain;
-  int _resolution;
+  float gain_factor[5] = {1, 3, 6, 9, 18};
+  float res_factor[6] = {4, 2, 1, 0.5, 0.25, 0.03125};
 };
 
 #endif
