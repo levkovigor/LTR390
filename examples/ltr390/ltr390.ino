@@ -3,6 +3,13 @@
 
 #define I2C_ADDRESS 0x53
 
+/* There are several ways to create your LTR390 object:
+ * LTR390 ltr390 = LTR390()                    -> uses Wire / I2C Address = 0x53
+ * LTR390 ltr390 = LTR390(OTHER_ADDR)          -> uses Wire / I2C_ADDRESS
+ * LTR390 ltr390 = LTR390(&wire2)              -> uses the TwoWire object wire2 / I2C_ADDRESS
+ * LTR390 ltr390 = LTR390(&wire2, I2C_ADDRESS) -> all together
+ * Successfully tested with two I2C busses on an ESP32
+ */
 LTR390 ltr390(I2C_ADDRESS);
 
 void setup() {
