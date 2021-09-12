@@ -94,9 +94,9 @@ public:
   uint32_t readUVS(void);
   uint32_t readALS(void);
 
-  uint32_t getLux(void);
+  float getLux(void);
 
-  uint32_t getUVI(void);
+  float getUVI(void);
 
   uint8_t writeRegister(uint8_t reg, uint8_t val);
   uint8_t readRegister(uint8_t reg);
