@@ -81,7 +81,7 @@ uint32_t LTR390::readALS(void) {
   uint8_t _msb = readRegister(LTR390_ALSDATA_MSB);
   uint8_t _hsb = readRegister(LTR390_ALSDATA_HSB);
   _hsb &= 0x0F;
-  uint32_t _out = (_hsb << 16) | (_msb << 8) | _lsb; 
+  uint32_t _out = ((uint32_t)_hsb << 16) | ((uint16_t)_msb << 8) | _lsb;
   return _out;
 }
 
@@ -94,7 +94,7 @@ uint32_t LTR390::readUVS(void) {
   uint8_t _msb = readRegister(LTR390_UVSDATA_MSB);
   uint8_t _hsb = readRegister(LTR390_UVSDATA_HSB);
   _hsb &= 0x0F;
-  uint32_t _out = (_hsb << 16) | (_msb << 8) | _lsb; 
+  uint32_t _out = ((uint32_t)_hsb << 16) | ((uint16_t)_msb << 8) | _lsb;
   return _out;
 }
 
