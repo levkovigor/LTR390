@@ -50,7 +50,7 @@ bool LTR390::init() {
 bool LTR390::reset(void) {
   uint8_t _r = readRegister(LTR390_MAIN_CTRL);
   _r |= B00010000;
-  byte ack = writeRegister(LTR390_MAIN_CTRL, _r);
+  writeRegister(LTR390_MAIN_CTRL, _r);
   delay(10);
   _r = readRegister(LTR390_MAIN_CTRL);
   if (_r != 0) {
